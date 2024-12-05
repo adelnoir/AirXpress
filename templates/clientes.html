@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de Clientes</h1>
+    </header>
+    <form action="/clientes" method="post">
+        <label>Nome: <input type="text" name="nome" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <button type="submit">Adicionar Cliente</button>
+    </form>
+    <ul>
+        {% for cliente in clientes %}
+        <li>
+            Nome: {{ cliente[1] }} | Email: {{ cliente[2] }}
+            <form action="/clientes/{{ cliente[0] }}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Remover</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <nav>
+        <a href="/">Página Principal</a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Voos</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de Voos</h1>
+    </header>
+    <form action="/voos" method="post">
+        <label>Origem: <input type="text" name="origem" required></label><br>
+        <label>Destino: <input type="text" name="destino" required></label><br>
+        <label>Data: <input type="date" name="data" required></label><br>
+        <label>Capacidade: <input type="number" name="capacidade" required></label><br>
+        <button type="submit">Adicionar Voo</button>
+    </form>
+    <ul>
+        {% for voo in voos %}
+        <li>{{ voo[1] }} -> {{ voo[2] }} em {{ voo[3] }} (Capacidade: {{ voo[4] }})</li>
+        {% endfor %}
+    </ul>
+    <nav>
+        <a href="/">Página Principal</a>
+    </nav>
+</body>
+</html>

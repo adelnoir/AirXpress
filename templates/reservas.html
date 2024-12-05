@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de Reservas</h1>
+    </header>
+    <form action="/reservas" method="post">
+        <label>ID Cliente: <input type="number" name="cliente_id" required></label><br>
+        <label>ID Voo: <input type="number" name="voo_id" required></label><br>
+        <button type="submit">Adicionar Reserva</button>
+    </form>
+
+    <ul>
+        {% for reserva in reservas %}
+        <li>
+            Reserva ID: {{ reserva[0] }} | Cliente ID: {{ reserva[1] }} | Voo ID: {{ reserva[2] }}
+            <form action="/reservas/{{ reserva[0] }}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Remover</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <nav>
+        <a href="/">Página Principal</a>
+    </nav>
+</body>
+</html>
